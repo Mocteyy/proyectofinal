@@ -4,17 +4,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="203.0" style="-fx-background-color: #5CC6FF;">
+      <AnchorPane prefHeight="500.0" prefWidth="164.0" style="-fx-background-color: #ED9300;">
          <children>
-            <Button layoutX="71.0" layoutY="430.0" mnemonicParsing="false" style="-fx-background-color: #5CC6FF;" text="Salir" textFill="WHITE">
+            <Button layoutX="51.0" layoutY="413.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Salir" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
+
    </children>
 </AnchorPane>
