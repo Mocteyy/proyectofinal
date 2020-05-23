@@ -12,11 +12,8 @@ public class DataHolderEmpleados {
             if (e.getRFC().equals(empleado.getRFC())) {
                 return false;
             }
-
         }
-
         empleados.add(empleado);
-
         return true;
     }
 
@@ -51,4 +48,23 @@ public class DataHolderEmpleados {
         e.setTelefono(telefono);
     }
 
+    public static ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    private static Empleado [] matrizPrueba = {
+            new Empleado("ASD124", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD125", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD126", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD127", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD128", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD129", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD130", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD131", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+
+    };
+
+    public static Empleado[] getMatrizPrueba() {
+        return matrizPrueba;
+    }
 }
