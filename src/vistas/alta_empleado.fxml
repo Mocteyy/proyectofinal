@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controladores.altaEmpleado"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.layout.Pane?>
 
+<AnchorPane prefHeight="463.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.altaEmpleado">
+    <Pane layoutX="400.0" layoutY="-2.0" prefHeight="471.0" prefWidth="200.0" style="-fx-background-color: #F5DA81;">
+        <Button layoutX="62.0" layoutY="407.0" mnemonicParsing="false" text="REGISTRAR">
+            <effect>
+                <DropShadow color="#00000057" height="6.17" radius="2.585" width="6.17" />
+            </effect>
+        </Button>
+    </Pane>
+    <Label layoutX="69.0" layoutY="68.0" text="RFC" />
+    <Label layoutX="70.0" layoutY="125.0" text="NOMBRE" />
+    <Label layoutX="70.0" layoutY="185.0" text="SEXO" />
+    <Label layoutX="175.0" layoutY="244.0" text="TELEFONO" />
+    <Label layoutX="69.0" layoutY="244.0" text="EDAD" />
+    <Label layoutX="71.0" layoutY="300.0" text="E-MAIL" />
+    
+    <RadioButton layoutX="161.0" layoutY="185.0" mnemonicParsing="false" text="M" />
+    <RadioButton layoutX="268.0" layoutY="185.0" mnemonicParsing="false" text="F" />
+   <SplitMenuButton layoutX="69.0" layoutY="358.0" mnemonicParsing="false" text="PUESTO">
+     <items>
+       <MenuItem mnemonicParsing="false" text="CAJERO" />
+       <MenuItem mnemonicParsing="false" text="LIMPIEZA" />
+     </items>
+   </SplitMenuButton>
+   <TextField layoutX="152.0" layoutY="64.0" />
+   <TextField layoutX="152.0" layoutY="121.0" />
+   <TextField layoutX="152.0" layoutY="296.0" />
+   <TextField layoutX="110.0" layoutY="240.0" prefHeight="25.0" prefWidth="58.0" />
+   <TextField layoutX="244.0" layoutY="240.0" prefHeight="25.0" prefWidth="139.0" />
 </AnchorPane>
