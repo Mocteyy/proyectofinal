@@ -17,12 +17,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button layoutX="645.0" layoutY="421.0" mnemonicParsing="false" >
-         <ImageView>
-            <image>
-               <Image url="@../assets/logo.png"/>
-            </image>
-         </ImageView>
-      </Button>
+
    </children>
 </AnchorPane>
