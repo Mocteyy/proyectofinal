@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #616161;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="910.0" style="-fx-background-color: #616161;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.inicioController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="164.0" style="-fx-background-color: #183B97;">
+      <AnchorPane fx:id="changePane" layoutX="149.0" layoutY="-2.0" prefHeight="470.0" prefWidth="760.0" />
+      <AnchorPane layoutX="-14.0" prefHeight="470.0" prefWidth="170.0" style="-fx-background-color: #183B97; -fx-background-radius: 20;">
+
          <children>
-            <Button layoutX="51.0" layoutY="413.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Salir" textFill="WHITE">
+            <Button layoutX="59.0" layoutY="410.0" mnemonicParsing="false" onAction="#salir" style="-fx-background-color: transparent;" text="Salir" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="56.0" layoutY="198.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="51.0" style="-fx-background-color: #ED9300;" text="Alta" />
-            <Button layoutX="56.0" layoutY="269.0" mnemonicParsing="false" style="-fx-background-color: #ED9300;" stylesheets="@../assets/css/tableView.css" text="Buscar" />
+            <Button fx:id="altaButton" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" onAction="#alta" prefHeight="39.0" prefWidth="160.0" style="-fx-background-color: #183B97;" text="Alta" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="buscarButton" layoutX="14.0" layoutY="210.0" mnemonicParsing="false" onAction="#buscar" prefWidth="160.0" style="-fx-background-color: #183B97;" stylesheets="@../assets/css/tableView.css" text="Buscar" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <ImageView fitHeight="123.0" fitWidth="130.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/logo.png" />
+               </image>
+            </ImageView>
          </children>
+         <effect>
+            <DropShadow height="0.0" radius="4.75" />
+         </effect>
       </AnchorPane>
 
    </children>

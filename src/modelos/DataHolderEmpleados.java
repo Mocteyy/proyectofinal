@@ -53,14 +53,14 @@ public class DataHolderEmpleados {
     }
 
     private static Empleado [] matrizPrueba = {
-            new Empleado("ASD124", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
-            new Empleado("ASD125", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
-            new Empleado("ASD126", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
-            new Empleado("ASD127", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
-            new Empleado("ASD128", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
-            new Empleado("ASD129", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
-            new Empleado("ASD130", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
-            new Empleado("ASD131", "David Yanez", true,"123456891",19,"ddyy@hotmail.com","Programador"),
+            new Empleado("ASD124", "Daniel Gámez", true,"2469201385",19,"lelemc@outlook.es","Programador"),
+            new Empleado("ASD125", "David Yanez", true,"5860193856",19,"ddyymoctey@gmail.com","Programador"),
+            new Empleado("ASD126", "Luis Yanez", true,"19857918",19,"luiselpro@hotmail.com","Tester"),
+            new Empleado("ASD127", "Judas Fimbres", true,"4758392057",19,"tiobertix@gmail.com","Programador"),
+            new Empleado("ASD128", "Oskar Gómez", true,"6759403756",19,"oskarin@hotmail.com","Administrador"),
+            new Empleado("ASD129", "Francisco Yanez", true,"175495069",19,"pacopancho@outlook.es","Programador"),
+            new Empleado("ASD130", "Alberto Ochoa", true,"5676683349",19,"betoelloco@hotmail.com","Tester"),
+            new Empleado("ASD131", "Alma Negrete", true,"6341243759",19,"almavida@gmail.com","Analista"),
 
     };
 
