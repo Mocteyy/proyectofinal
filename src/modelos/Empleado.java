@@ -8,7 +8,7 @@ public class Empleado {
     private String telefono;
     private int edad;
     private String email;
-    private String puesto;
+    private Puesto puesto;
 
     public Empleado(String RFC, String nombre, boolean sexo, String telefono, int edad, String email, String puesto) {
         this.RFC = RFC;
@@ -17,7 +17,7 @@ public class Empleado {
         this.telefono = telefono;
         this.edad = edad;
         this.email = email;
-        this.puesto = puesto;
+        this.puesto = DataHolderPuesto.leer(puesto);
     }
 
     public String getRFC() {
@@ -64,11 +64,15 @@ public class Empleado {
         this.email = email;
     }
 
-    public String getPuesto() {
-        return puesto;
+    public String  getNombrePuesto() {
+        return puesto.getNombrePuesto();
     }
 
     public void setPuesto(String puesto) {
-        this.puesto = puesto;
+        this.puesto = DataHolderPuesto.leer(puesto);
+    }
+
+    public Puesto getPuesto() {
+        return puesto;
     }
 }
