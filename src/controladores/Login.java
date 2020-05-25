@@ -34,8 +34,9 @@ public class Login {
     private void loadSecond() throws IOException{ //Cargar la segunda pantalla
         if (!user.getText().isEmpty() && !password.getText().isEmpty()) {
             if (user.getText().equalsIgnoreCase("prueba") && password.getText().equalsIgnoreCase("1234")) {
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("/vistas/inicio.fxml"));
-                rootPane.getChildren().setAll(pane);
+                Stage stage = (Stage) password.getScene().getWindow();
+                stage.close();
+                initSecond();
             }
         }
     }
@@ -45,18 +46,28 @@ public class Login {
         password.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER){
                 if (user.getText().equalsIgnoreCase("prueba") && password.getText().equalsIgnoreCase("1234")) {
-                    AnchorPane pane = null;
+                    Stage stage = (Stage) password.getScene().getWindow();
+                    stage.close();
+
                     try {
-                        pane = FXMLLoader.load(getClass().getResource("/vistas/inicio.fxml"));
+                        initSecond();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    rootPane.getChildren().setAll(pane);
                 }
             }
         });
     }
 
+    private void initSecond() throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/vistas/inicio.fxml"));
+        primaryStage.setTitle("Sistema gestor de empleados");
+
+        primaryStage.setScene(new Scene(root, 900, 460));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
 
 
     @FXML

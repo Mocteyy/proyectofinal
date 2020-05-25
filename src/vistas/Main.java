@@ -13,11 +13,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Sistema gestor de empleados");
-        primaryStage.setScene(new Scene(root, 900, 460));
+        primaryStage.setScene(new Scene(root, 690, 350));
         primaryStage.setResizable(false);
         primaryStage.show();
 
     }
+
+
 
 
     public static void main(String[] args) {

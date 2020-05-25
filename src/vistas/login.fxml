@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="480.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.Login">
+<AnchorPane fx:id="rootPane" prefHeight="350.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.Login">
    <children>
-      <ImageView fitHeight="554.0" fitWidth="900.0" layoutX="-143.0" layoutY="-38.0" pickOnBounds="true">
+      <ImageView fitHeight="350.0" fitWidth="826.0" layoutX="-136.0" layoutY="-6.0" pickOnBounds="true">
          <image>
             <Image url="@../assets/images/fondo.jpg" />
          </image>
@@ -23,7 +23,7 @@
             <GaussianBlur radius="23.25" />
          </effect>
       </ImageView>
-      <TextField fx:id="user" layoutX="133.0" layoutY="136.0" opacity="0.66" prefHeight="36.0" prefWidth="206.0" promptText="Usuario" style="-fx-background-color: #000000; -fx-text-fill: white">
+      <TextField fx:id="user" layoutX="116.0" layoutY="122.0" opacity="0.66" prefHeight="36.0" prefWidth="206.0" promptText="Usuario" style="-fx-background-color: #000000; -fx-text-fill: white">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -31,12 +31,12 @@
             <InnerShadow radius="4.75" width="0.0" />
          </effect>
       </TextField>
-      <PasswordField fx:id="password" layoutX="133.0" layoutY="212.0" opacity="0.66" prefHeight="36.0" prefWidth="206.0" promptText="Contraseña" style="-fx-background-color: #000000; -fx-text-fill: white">
+      <PasswordField fx:id="password" layoutX="116.0" layoutY="198.0" opacity="0.66" prefHeight="36.0" prefWidth="206.0" promptText="Contraseña" style="-fx-background-color: #000000; -fx-text-fill: white">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </PasswordField>
-      <Button fx:id="entrar" layoutX="199.0" layoutY="294.0" mnemonicParsing="false" onAction="#loadSecond" style="-fx-background-color: #ED9300; -fx-background-radius: 10;" text="ENTRAR" textFill="WHITE">
+      <Button fx:id="entrar" layoutX="182.0" layoutY="261.0" mnemonicParsing="false" onAction="#loadSecond" style="-fx-background-color: #ED9300; -fx-background-radius: 10;" text="ENTRAR" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -47,7 +47,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Label layoutX="127.0" layoutY="74.0" prefHeight="29.0" prefWidth="235.0" text="Gestor de empleados" textFill="WHITE">
+      <Label layoutX="110.0" layoutY="60.0" prefHeight="29.0" prefWidth="235.0" text="Gestor de empleados" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="21.0" />
          </font>
@@ -55,7 +55,7 @@
             <DropShadow color="#00000066" spread="0.69" />
          </effect>
       </Label>
-      <ImageView fitHeight="201.0" fitWidth="198.0" layoutX="591.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="201.0" fitWidth="198.0" layoutX="425.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/images/logo.png" />
          </image>

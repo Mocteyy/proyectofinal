@@ -17,8 +17,8 @@ public class inicioController {
 
     @FXML
     private void buscar() throws IOException {
-        buscarButton.setStyle("-fx-background-color: #A1A1A2;");
-        altaButton.setStyle("-fx-background-color:  #183B97;");
+        buscarButton.setStyle("-fx-background-color: #183B97;");
+        altaButton.setStyle("-fx-background-color:  #2E64FE");
 
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/vistas/buscar.fxml"));
         changePane.getChildren().setAll(pane);
@@ -26,9 +26,9 @@ public class inicioController {
 
     @FXML
     private void alta() throws IOException {
-        altaButton.setStyle("-fx-background-color: #A1A1A2;");
-        buscarButton.setStyle("-fx-background-color:  #183B97;");
-        
+        altaButton.setStyle("-fx-background-color: #183B97;");
+        buscarButton.setStyle("-fx-background-color:  #2E64FE");
+
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/vistas/alta_empleado.fxml"));
         changePane.getChildren().setAll(pane);
     }

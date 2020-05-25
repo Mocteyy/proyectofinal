@@ -6,6 +6,8 @@ public class DataHolderEmpleados {
 
     private static ArrayList<Empleado> empleados = new ArrayList<>();
 
+    public static int NOMBRE = 1, PUESTO = 2, RFC = 3;
+
     public static boolean create(Empleado empleado) {
         for (Empleado e :
                 empleados) {
@@ -17,14 +19,47 @@ public class DataHolderEmpleados {
         return true;
     }
 
-    public static Empleado read(String rfc){
-        for (Empleado e :
-                empleados) {
-            if (e.getRFC().equals(rfc)){
-                return e;
+    public static ArrayList<Empleado> read(String variable, int condicionante){ //Método para sólo buscar si se ingresa solo un campo.
+        ArrayList<Empleado> resultado = new ArrayList<>();
+
+        if (condicionante == NOMBRE) {//Aquí se busca por nombre.
+            for (Empleado empleado :
+                    empleados) {
+                if (empleado.getNombre().contains(variable)) {
+                    resultado.add(empleado);
+                }
             }
         }
-        return null;
+        else if (condicionante == PUESTO) { //Se busca por puesto
+            for (Empleado empleado :
+                    empleados) {
+                if (empleado.getPuesto().equals(variable)) {
+                    resultado.add(empleado);
+                }
+            }
+        }
+        else{ //Por último se busca por RFC
+            for (Empleado empleado :
+                    empleados) {
+                if (empleado.getRFC().equals(variable)) {
+                    resultado.add(empleado);
+                }
+            }
+        }
+        return resultado;
+    }
+
+    public static ArrayList<Empleado> read(String nombre, String puesto){
+        ArrayList<Empleado> resultado = new ArrayList<>();
+
+            for (Empleado empleado :
+                    empleados) {
+                if (empleado.getNombre().contains(nombre) && empleado.getPuesto().equals(puesto)) {
+                    resultado.add(empleado);
+                }
+            }
+
+        return resultado;
     }
 
 
@@ -59,8 +94,9 @@ public class DataHolderEmpleados {
             new Empleado("ASD127", "Judas Fimbres", true,"4758392057",19,"tiobertix@gmail.com","Programador"),
             new Empleado("ASD128", "Oskar Gómez", true,"6759403756",19,"oskarin@hotmail.com","Administrador"),
             new Empleado("ASD129", "Francisco Yanez", true,"175495069",19,"pacopancho@outlook.es","Programador"),
-            new Empleado("ASD130", "Alberto Ochoa", true,"5676683349",19,"betoelloco@hotmail.com","Tester"),
+            new Empleado("ASD130", "David Ochoa", true,"5676683349",19,"betoelloco@hotmail.com","Tester"),
             new Empleado("ASD131", "Alma Negrete", true,"6341243759",19,"almavida@gmail.com","Analista"),
+            new Empleado("ASD132", "David Aguilar", true,"6341743759",19,"davida@gmail.com","Programador"),
 
     };
 

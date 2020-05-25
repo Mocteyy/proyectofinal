@@ -29,7 +29,7 @@
          </effect>
       </TableView>
       <TextField fx:id="searchNombre" layoutX="276.0" layoutY="38.0" prefHeight="31.0" prefWidth="137.0" promptText="Nombre" />
-      <Button layoutX="184.0" layoutY="35.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: #ED9300; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
+      <Button onAction="#buscar" layoutX="184.0" layoutY="35.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: #ED9300; -fx-background-radius: 10;" text="Buscar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
