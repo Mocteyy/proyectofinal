@@ -33,7 +33,7 @@ public class DataHolderEmpleados {
         else if (condicionante == PUESTO) { //Se busca por puesto
             for (Empleado empleado :
                     empleados) {
-                if (empleado.getPuesto().equals(variable)) {
+                if (empleado.getNombrePuesto().equals(variable)) {
                     resultado.add(empleado);
                 }
             }
@@ -49,12 +49,12 @@ public class DataHolderEmpleados {
         return resultado;
     }
 
-    public static ArrayList<Empleado> read(String nombre, String puesto){
+    public static ArrayList<Empleado> read(String nombre, String puesto){ //Buscar por nombre y puesto
         ArrayList<Empleado> resultado = new ArrayList<>();
 
             for (Empleado empleado :
                     empleados) {
-                if (empleado.getNombre().contains(nombre) && empleado.getPuesto().equals(puesto)) {
+                if (empleado.getNombre().contains(nombre) && empleado.getNombrePuesto().equals(puesto)) {
                     resultado.add(empleado);
                 }
             }
@@ -63,7 +63,7 @@ public class DataHolderEmpleados {
     }
 
 
-    public static boolean delete(String RFC){
+    public static boolean delete(String RFC){ //Borrar un empleado a partir de su RFC
         for (Empleado e :
                 empleados) {
             if (e.getRFC().equals(RFC)){
@@ -87,7 +87,7 @@ public class DataHolderEmpleados {
         return empleados;
     }
 
-    private static Empleado [] matrizPrueba = {
+    private static Empleado [] matrizPrueba = { //Carga de matriz de prueba
             new Empleado("ASD124", "Daniel Gámez", true,"2469201385",19,"lelemc@outlook.es","Programador"),
             new Empleado("ASD125", "David Yanez", true,"5860193856",19,"ddyymoctey@gmail.com","Programador"),
             new Empleado("ASD126", "Luis Yanez", true,"19857918",19,"luiselpro@hotmail.com","Tester"),
