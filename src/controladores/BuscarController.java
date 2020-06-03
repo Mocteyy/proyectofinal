@@ -1,44 +1,51 @@
 package controladores;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import modelos.DataHolderEmpleados;
 import modelos.DataHolderPuesto;
 import modelos.Empleado;
 
+import javax.xml.crypto.Data;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BuscarController implements Runnable{
 
-    private ArrayList<Empleado> resultado = DataHolderEmpleados.getEmpleados();
+    private boolean flag = false;
+    private static boolean cambio = false;
+    private Stage stage;
+    private Thread thread;
+    private ArrayList<Empleado> resultado =  DataHolderEmpleados.getEmpleados();
+
 
     @FXML
     private TableView<Empleado> tableEmpleado;
     @FXML
     private TableColumn<Empleado, String> colRfc,colNombre,colCorreo,colTelefono,colPuesto;
-
-    private boolean flag = false;
-
-    private Thread thread;
-
-
+    @FXML
+    private Button search;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         /*En este método se inicializan el hilo para ver si extán vacíos los campos, la tabla, se cargan los
         * valores ya establecidos en DataHolderEmpleados.
         * También se inicializó el combobox*/
 
 
-        thread = new Thread(this);
-        thread.start();
+
+
         enterSearch(searchNombre,searchRFC, searchPuesto);
 
         colRfc.setCellValueFactory(new PropertyValueFactory<>("RFC"));
@@ -60,12 +67,47 @@ public class BuscarController implements Runnable{
         ObservableList<String> opciones = FXCollections.observableArrayList(
                 puestos
         );
-        //tipoAlumnos.add("Universidad");tipoAlumnos.add("Preparatoria");tipoAlumnos.add("Secundaria");
         searchPuesto.getItems().addAll(FXCollections.observableList(opciones));
+        searchPuesto.setValue("Puesto");
+
+
+
 
         tableEmpleado.getItems().addAll(resultado);
 
 
+        setOnClicListenerTable();
+
+        thread = new Thread(this);
+        thread.start();
+
+
+    }
+
+    private void inicializarEditarPane() throws IOException {
+        StackPane pane = FXMLLoader.load(getClass().getResource("/vistas/editar_empleado.fxml"));
+        stage = new Stage();
+        stage.setTitle("Editar empleado");
+        stage.setScene(new Scene(pane));
+        stage.show();
+
+    }
+
+    public void setOnClicListenerTable(){
+        tableEmpleado.setRowFactory(tv -> {
+            TableRow<Empleado> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty())) {
+                    DataHolderEmpleados.setEmpleadoEditarHolder(row.getItem());
+                    try {
+                        inicializarEditarPane();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
     }
 
 
@@ -75,16 +117,18 @@ public class BuscarController implements Runnable{
     private ComboBox<String> searchPuesto;
 
     public void buscar(){
+
         if (!thread.isAlive()){ //Si el hilo está activo, se destruye para volver a inicializarse.
             thread = new Thread(this);
             thread.start();
         }
 
-        if (searchNombre.getText().isEmpty() && searchRFC.getText().isEmpty() && (searchPuesto.getValue().equals("Todos") || searchPuesto.getValue().equals("Puesto"))){ //Verificación de textos nulos.
+        if (searchNombre.getText().isEmpty() && searchRFC.getText().isEmpty() && (searchPuesto.getValue().equals("Puesto"))){ //Verificación de textos nulos.
             System.out.println("Vacío");
         }else{
             if (rfcValdate()) { //Si el RFC está vacío, se procede a buscar o por nombre o por puesto
                 busqueda();
+
             }else { //Se busca por RFC
                 resultado = DataHolderEmpleados.read(searchRFC.getText(),DataHolderEmpleados.RFC);
             }
@@ -92,26 +136,30 @@ public class BuscarController implements Runnable{
     }
 
 
-    int i = 1;
+
     @Override
     public void run() {
         //Hilo para reestablecer los valores de la tabla para mostrar todos los empleados.
-        try {
+
             while (true) {
-                if (searchNombre.getText().isEmpty() && searchRFC.getText().isEmpty() && (searchPuesto.getValue().equals("Todos") || searchPuesto.getValue().equals("Puesto"))) {
-                    System.out.println(i);
-                    i++;
-                    tableEmpleado.getItems().clear();
+                if (searchNombre.getText().isEmpty() && searchRFC.getText().isEmpty() && (searchPuesto.getValue().equals("Puesto") || searchPuesto.getValue().equals("Puesto"))) {
+
                     tableEmpleado.refresh();
+                    tableEmpleado.getItems().clear();
+
+                    tableEmpleado.refresh();
+                    System.out.println("Tabla: "+tableEmpleado.getItems());
                     tableEmpleado.getItems().addAll(DataHolderEmpleados.getEmpleados());
 
                     tableEmpleado.refresh();
+
+                    break;
+                }
+                if (searchNombre.getText().isEmpty() && !searchPuesto.getValue().equals("Puesto")){
+                    busqueda();
                     break;
                 }
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     public void enterSearch(TextField textField1, TextField textField2, ComboBox<String> puestos){ //Al presionar enter en cualquier campo de texto, se ejecuta la búsqueda.
@@ -131,26 +179,37 @@ public class BuscarController implements Runnable{
     }
 
     private void busqueda(){
+
         if (searchRFC.getText().isEmpty()){
             if (searchPuesto.getValue().equals("Todos") || searchPuesto.getValue().equals("Puesto")){
                 resultado = DataHolderEmpleados.read(searchNombre.getText(), DataHolderEmpleados.NOMBRE);
             }
             else if(searchNombre.getText().isEmpty()){
-                resultado = DataHolderEmpleados.read(searchPuesto.getValue(), DataHolderEmpleados.PUESTO);
+                if (searchPuesto.getValue().equals("Todos")){
+                    resultado = DataHolderEmpleados.getEmpleados();
+                }else {
+                    resultado = DataHolderEmpleados.read(searchPuesto.getValue(), DataHolderEmpleados.PUESTO);
+                    System.out.println(resultado);
+                }
             }
             else{
                 resultado = DataHolderEmpleados.read(searchNombre.getText(),searchPuesto.getValue());
             }
         }
-
-
         tableEmpleado.getItems().clear();
         tableEmpleado.refresh();
+
         tableEmpleado.getItems().addAll(resultado);
+        //System.out.println("Tabla: "+tableEmpleado.getItems());
         tableEmpleado.refresh();
     }
 
     private boolean rfcValdate(){
         return searchRFC.getText().isEmpty();
+    }
+
+
+    public void actualizar(){
+        tableEmpleado.refresh();
     }
 }

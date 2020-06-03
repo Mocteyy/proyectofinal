@@ -1,5 +1,7 @@
 package modelos;
 
+import controladores.BuscarController;
+
 import java.util.ArrayList;
 
 public class DataHolderEmpleados {
@@ -102,5 +104,16 @@ public class DataHolderEmpleados {
 
     public static Empleado[] getMatrizPrueba() {
         return matrizPrueba;
+    }
+
+
+    private static Empleado empleadoEditarHolder;
+
+    public static Empleado getEmpleadoEditarHolder() {
+        return empleadoEditarHolder;
+    }
+
+    public static void setEmpleadoEditarHolder(Empleado empleadoEditarHolder) {
+        DataHolderEmpleados.empleadoEditarHolder = empleadoEditarHolder;
     }
 }

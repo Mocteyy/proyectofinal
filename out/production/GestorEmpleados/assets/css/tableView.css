@@ -8,7 +8,7 @@
 
 // color de fondo para cuando el raton este sobre la celda
 .table-cell:hover {
-    -fx-background-color: #9900ff;
+    -fx-background-color: #7397FF;
 }
 
 // color para filas vacias,

@@ -7,10 +7,10 @@ import java.util.List;
 public class DataHolderPuesto {
 
     private static List<Puesto> puestos = new ArrayList<>(Arrays.asList(
-            new Puesto("Programador",15000.0),
-            new Puesto("Tester",17000.0),
-            new Puesto("Administrador",16000.0),
-            new Puesto("Analista",20000.0)));
+            new Puesto("Programador",15000.0, Puesto.programador),
+            new Puesto("Tester",17000.0, Puesto.tester),
+            new Puesto("Administrador",16000.0, Puesto.administrador),
+            new Puesto("Analista",20000.0, Puesto.analista)));
 
     public static ArrayList<String> getNombrePuestos() { //Este método regresa los nombres de todos los empleos
         ArrayList<String> resultado = new ArrayList<>();

@@ -15,7 +15,12 @@ public class Main extends Application {
         primaryStage.setTitle("Sistema gestor de empleados");
         primaryStage.setScene(new Scene(root, 690, 350));
         primaryStage.setResizable(false);
+
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(event -> {
+            System.exit(0);
+        });
 
     }
 
