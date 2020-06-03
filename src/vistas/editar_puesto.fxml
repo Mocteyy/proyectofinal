@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.EditarPuestoController">
+   <children>
+      <AnchorPane maxHeight="350.0" maxWidth="600.0" minHeight="350.0" minWidth="600.0" prefHeight="350.0" prefWidth="600.0" style="-fx-background-color: #616161; ">
+         <children>
+            <Button fx:id="guardar_button" layoutX="479.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: #ED9300; -fx-background-radius: 10" text="GUARDAR" textFill="WHITE">
+               <effect>
+                  <DropShadow color="#000000a5" height="15.0" radius="7.0" width="15.0" />
+               </effect>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="salir_button" layoutX="45.0" layoutY="299.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Salir" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="67.0" layoutY="14.0" prefHeight="45.0" prefWidth="203.0" text="Editar puesto" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Symbol" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="83.0" layoutY="89.0" text="NOMBRE" textFill="WHITE" />
+            <TextField fx:id="nombre_puesto" layoutX="171.0" layoutY="85.0" />
+            <Label layoutX="84.0" layoutY="128.0" text="SALARIO" textFill="WHITE" />
+            <TextField fx:id="salario_puesto" layoutX="171.0" layoutY="124.0" />
+            <Label layoutX="83.0" layoutY="166.0" text="DESCRIPCIÓN" textFill="WHITE" />
+            <TextArea fx:id="description_puesto" layoutX="169.0" layoutY="166.0" prefHeight="109.0" prefWidth="262.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
