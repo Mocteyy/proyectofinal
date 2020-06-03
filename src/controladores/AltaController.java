@@ -41,7 +41,11 @@ public class AltaController {
     @FXML
     private StackPane rootPane;
 
+    private String rfc, nombre, telefono, email, puesto;
+
     private boolean sexo = false;
+
+    private int edad = 0;
 
     @FXML
     public void initialize(){
@@ -51,8 +55,8 @@ public class AltaController {
     }
 
     public void generarEmpleado() {
-        String rfc, nombre, telefono, email, puesto;
-        int edad = 0;
+
+
 
 
         try {

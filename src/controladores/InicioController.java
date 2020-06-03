@@ -32,7 +32,7 @@ public class InicioController {
         puestosButton.setStyle("-fx-background-color:  #2E64FE");
         inicioButton.setStyle("-fx-background-color:  #2E64FE");
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/vistas/buscar.fxml"));
+        StackPane pane = FXMLLoader.load(getClass().getResource("/vistas/buscar.fxml"));
         changePane.getChildren().setAll(pane);
     }
 

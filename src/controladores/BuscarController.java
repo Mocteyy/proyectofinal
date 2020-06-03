@@ -1,5 +1,8 @@
 package controladores;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -8,7 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -24,12 +30,13 @@ import java.util.ArrayList;
 public class BuscarController implements Runnable{
 
     private boolean flag = false;
-    private static boolean cambio = false;
     private Stage stage;
     private Thread thread;
     private ArrayList<Empleado> resultado =  DataHolderEmpleados.getEmpleados();
 
 
+    @FXML
+    private StackPane rootPane;
     @FXML
     private TableView<Empleado> tableEmpleado;
     @FXML
@@ -54,12 +61,7 @@ public class BuscarController implements Runnable{
         colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         colPuesto.setCellValueFactory(new PropertyValueFactory<>("nombrePuesto"));
 
-        if (!flag){
-            for (int i = 0; i < DataHolderEmpleados.getMatrizPrueba().length; i++) {
-                DataHolderEmpleados.create(DataHolderEmpleados.getMatrizPrueba()[i]);
-            }
-            flag = true;
-        }
+
 
         ArrayList<String> puestos =  DataHolderPuesto.getNombrePuestos();
         puestos.add("Todos");
@@ -73,7 +75,7 @@ public class BuscarController implements Runnable{
 
 
 
-        tableEmpleado.getItems().addAll(resultado);
+        tableEmpleado.getItems().addAll(DataHolderEmpleados.getEmpleados());
 
 
         setOnClicListenerTable();
@@ -89,6 +91,7 @@ public class BuscarController implements Runnable{
         stage = new Stage();
         stage.setTitle("Editar empleado");
         stage.setScene(new Scene(pane));
+        stage.getIcons().add(new Image("/assets/images/LOGO3.png"));
         stage.show();
 
     }
@@ -123,14 +126,20 @@ public class BuscarController implements Runnable{
             thread.start();
         }
 
-        if (searchNombre.getText().isEmpty() && searchRFC.getText().isEmpty() && (searchPuesto.getValue().equals("Puesto"))){ //Verificación de textos nulos.
-            System.out.println("Vacío");
+        if (searchNombre.getText().isEmpty() && searchRFC.getText().isEmpty() && ((searchPuesto.getValue().equals("Puesto")) || searchPuesto.getValue().equals("Todos"))){ //Verificación de textos nulos.
+            alertas("Sin criterios de búsqueda");
         }else{
             if (rfcValdate()) { //Si el RFC está vacío, se procede a buscar o por nombre o por puesto
                 busqueda();
 
-            }else { //Se busca por RFC
+            }else if(searchNombre.getText().isEmpty() && ((searchPuesto.getValue().equals("Puesto")) || searchPuesto.getValue().equals("Todos"))){ //Se busca por RFC
                 resultado = DataHolderEmpleados.read(searchRFC.getText(),DataHolderEmpleados.RFC);
+                tableEmpleado.getItems().clear();
+                tableEmpleado.refresh();
+                tableEmpleado.getItems().addAll(resultado);
+            }
+            else{
+                alertas("Para buscar por RFC no puede buscar por nombre");
             }
         }
     }
@@ -196,12 +205,19 @@ public class BuscarController implements Runnable{
                 resultado = DataHolderEmpleados.read(searchNombre.getText(),searchPuesto.getValue());
             }
         }
-        tableEmpleado.getItems().clear();
-        tableEmpleado.refresh();
 
-        tableEmpleado.getItems().addAll(resultado);
-        //System.out.println("Tabla: "+tableEmpleado.getItems());
-        tableEmpleado.refresh();
+        if (resultado.size()==0){
+            alertas("No se han encontrado resultados!");
+        }
+        else{
+            tableEmpleado.getItems().clear();
+            tableEmpleado.refresh();
+
+            tableEmpleado.getItems().addAll(resultado);
+            //System.out.println("Tabla: "+tableEmpleado.getItems());
+            tableEmpleado.refresh();
+        }
+
     }
 
     private boolean rfcValdate(){
@@ -210,6 +226,36 @@ public class BuscarController implements Runnable{
 
 
     public void actualizar(){
+        tableEmpleado.getItems().clear();
         tableEmpleado.refresh();
+        tableEmpleado.getItems().addAll(DataHolderEmpleados.getEmpleados());
+    }
+
+    private void alertas(String aviso){
+        searchNombre.setFocusTraversable(false);
+        JFXButton button = new JFXButton();
+        Image image = new Image("/assets/icons/baseline_check_white_48dp.png", 25.0,25.0,true,true);
+        ImageView imageView = new ImageView(image);
+        button.setGraphic(imageView);
+
+
+        JFXDialogLayout dialogLayout = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(rootPane,dialogLayout,JFXDialog.DialogTransition.LEFT);
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            dialog.close();
+
+        });
+
+        Label label = new Label(aviso);
+
+
+        label.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold;");
+        button.setStyle("-fx-background-radius: 50; -fx-background-color:  #ED9300; -fx-font-size: 10pt; -fx-text-fill: white; -fx-font-weight: bold");
+        dialogLayout.setBody(label);
+        dialogLayout.setActions(button);
+        dialog.setStyle("-fx-background-radius: 20");
+
+
+        dialog.show();
     }
 }

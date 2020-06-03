@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -66,7 +67,11 @@ public class Login {
 
         primaryStage.setScene(new Scene(root, 900, 460));
         primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("/assets/images/LOGO3.png"));
         primaryStage.show();
+        primaryStage.setOnCloseRequest(event -> {
+            System.exit(0);
+        });
     }
 
 

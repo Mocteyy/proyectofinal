@@ -110,7 +110,7 @@ public class EditarEmpleadoController {
             }
         }
         else{
-            crearAlerta("Campo o campos vacíos");
+            crearAlerta("Campo o campos vacíos", false);
         }
 
 
@@ -119,26 +119,27 @@ public class EditarEmpleadoController {
     private boolean validaciones(int condi, String campoValidar){
         if (condi == 1){
             if (!Validator.validateTelephone(campoValidar)){
-                crearAlerta("Número telefónico inválido");
+                crearAlerta("Número telefónico inválido", false);
                 return false;
             }
         }
         else if (condi == 2){
             if (!Validator.validateName(campoValidar)){
-                crearAlerta("En el nombre solo pueden ir letras");
+                crearAlerta("En el nombre solo pueden ir letras", false);
                 return false;
             }
         }
         else if(condi == 3){
             if (!Validator.valdateEmail(campoValidar)) {
-                crearAlerta("Correo electrónico inválido");
+                crearAlerta("Correo electrónico inválido", false);
                 return false;
             }
         }
         return true;
     }
 
-    private void crearAlerta(String aviso){
+    private void crearAlerta(String aviso, boolean despedir){
+
 
         JFXButton button = new JFXButton();
         Image image = new Image("/assets/icons/baseline_check_white_48dp.png", 25.0,25.0,true,true);
@@ -148,10 +149,20 @@ public class EditarEmpleadoController {
 
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(rootPane,dialogLayout,JFXDialog.DialogTransition.LEFT);
-        button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            dialog.close();
 
-        });
+
+
+        if (despedir){
+            button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+                Stage stage = (Stage) rfcEditar.getScene().getWindow();
+                stage.close();
+            });
+        }else{
+            button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+                dialog.close();
+            });
+        }
+
 
         Label label = new Label(aviso);
 
@@ -163,6 +174,43 @@ public class EditarEmpleadoController {
         dialog.setStyle("-fx-background-radius: 20");
 
         dialog.show();
+    }
+
+    public void despedir(){
+
+        JFXButton button = new JFXButton("Despedir");
+        JFXButton button1 = new JFXButton("Cancelar");
+
+
+
+
+
+        JFXDialogLayout dialogLayout = new JFXDialogLayout();
+        JFXDialog dialog = new JFXDialog(rootPane,dialogLayout,JFXDialog.DialogTransition.LEFT);
+
+        Label label = new Label("Desea despedir a este empleado?");
+
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            DataHolderEmpleados.delete(rfcEditar.getText());
+            dialog.close();
+            crearAlerta("Empleado despedido", true);
+        });
+
+        button1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            dialog.close();
+        });
+
+        label.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold;");
+        button.setStyle("-fx-background-radius: 50; -fx-background-color:  #ED9300; -fx-font-size: 10pt; -fx-text-fill: white; -fx-font-weight: bold");
+        button1.setStyle("-fx-background-radius: 50; -fx-background-color:  #ED9300; -fx-font-size: 10pt; -fx-text-fill: white; -fx-font-weight: bold");
+        dialogLayout.setBody(label);
+        dialogLayout.setActions(button, button1);
+        dialog.setStyle("-fx-background-radius: 20");
+
+        dialog.show();
+
+
+
     }
 
 

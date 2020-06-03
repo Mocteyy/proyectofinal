@@ -43,7 +43,7 @@ public class DataHolderEmpleados {
         else{ //Por último se busca por RFC
             for (Empleado empleado :
                     empleados) {
-                if (empleado.getRFC().equals(variable)) {
+                if (empleado.getRFC().equals(variable.toUpperCase())) {
                     resultado.add(empleado);
                 }
             }
@@ -90,15 +90,15 @@ public class DataHolderEmpleados {
     }
 
     private static Empleado [] matrizPrueba = { //Carga de matriz de prueba
-            new Empleado("ASD124", "Daniel Gámez", true,"2469201385",19,"lelemc@outlook.es","Programador"),
-            new Empleado("ASD125", "David Yanez", true,"5860193856",19,"ddyymoctey@gmail.com","Programador"),
-            new Empleado("ASD126", "Luis Yanez", true,"19857918",19,"luiselpro@hotmail.com","Tester"),
-            new Empleado("ASD127", "Judas Fimbres", true,"4758392057",19,"tiobertix@gmail.com","Programador"),
-            new Empleado("ASD128", "Oskar Gómez", true,"6759403756",19,"oskarin@hotmail.com","Administrador"),
-            new Empleado("ASD129", "Francisco Yanez", true,"175495069",19,"pacopancho@outlook.es","Programador"),
-            new Empleado("ASD130", "David Ochoa", true,"5676683349",19,"betoelloco@hotmail.com","Tester"),
-            new Empleado("ASD131", "Alma Negrete", true,"6341243759",19,"almavida@gmail.com","Analista"),
-            new Empleado("ASD132", "David Aguilar", true,"6341743759",19,"davida@gmail.com","Programador"),
+            new Empleado("ASD124345HR7", "Daniel Gámez", true,"2469201385",19,"lelemc@outlook.es","Programador"),
+            new Empleado("ASD125679GT8", "David Yanez", true,"5860193856",19,"ddyymoctey@gmail.com","Programador"),
+            new Empleado("ASD126683XR3", "Luis Yanez", true,"1985791847",19,"luiselpro@hotmail.com","Tester"),
+            new Empleado("ASD127702HSR", "Judas Fimbres", true,"4758392057",19,"tiobertix@gmail.com","Programador"),
+            new Empleado("ASD128578HNR", "Oskar Gómez", true,"6759403756",19,"oskarin@hotmail.com","Administrador"),
+            new Empleado("ASD129246FGT", "Francisco Yanez", true,"1754950693",19,"pacopancho@outlook.es","Programador"),
+            new Empleado("ASD130679GY6", "David Ochoa", true,"5676683349",19,"betoelloco@hotmail.com","Tester"),
+            new Empleado("ASD131167YH7", "Alma Negrete", true,"6341243759",19,"almavida@gmail.com","Analista"),
+            new Empleado("ASD132689FG5", "David Aguilar", true,"6341743759",19,"davida@gmail.com","Programador"),
 
     };
 
