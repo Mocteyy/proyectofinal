@@ -100,14 +100,20 @@ public class EditarEmpleadoController {
         if (!nombreEditar.getText().isEmpty() && (sexoM.isSelected() || sexoF.isSelected()) && !telefonoEditar.getText().isEmpty() && !edadEditar.getText().isEmpty()
         && !emailEditar.getText().isEmpty() && !comboPuestoEditar.getValue().equals("PUESTO")) {
 
-            if (validaciones(1, telefonoEditar.getText()) && validaciones(2,nombreEditar.getText())
-            && validaciones(3, emailEditar.getText())){
+            if (Integer.parseInt(edadEditar.getText()) > 0) {
+                if (validaciones(1, telefonoEditar.getText()) && validaciones(2, nombreEditar.getText())
+                        && validaciones(3, emailEditar.getText())) {
 
-                DataHolderEmpleados.update(empleado, nombreEditar.getText(), sexo, telefonoEditar.getText(), Integer.parseInt(edadEditar.getText()), emailEditar.getText(), comboPuestoEditar.getValue());
+                    DataHolderEmpleados.update(empleado, nombreEditar.getText(), sexo, telefonoEditar.getText(), Integer.parseInt(edadEditar.getText()), emailEditar.getText(), comboPuestoEditar.getValue());
 
-                Stage stage = (Stage) rfcEditar.getParent().getScene().getWindow();
-                stage.close();
+                    Stage stage = (Stage) rfcEditar.getParent().getScene().getWindow();
+                    stage.close();
+                }
             }
+            else{
+                crearAlerta("Edad inválida", false);
+            }
+
         }
         else{
             crearAlerta("Campo o campos vacíos", false);

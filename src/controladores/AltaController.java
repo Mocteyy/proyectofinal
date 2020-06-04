@@ -67,6 +67,8 @@ public class AltaController {
                 if (validaciones(1, textTelefono.getText()) && validaciones(2, textNombre.getText()) &&
                         validaciones(3,textEmail.getText()) && validaciones(4, textRfc.getText())) {
 
+
+
                     rfc = textRfc.getText();
                     nombre = textNombre.getText();
 
@@ -74,15 +76,22 @@ public class AltaController {
                     telefono = textTelefono.getText();
 
                     edad = Integer.parseInt(textEdad.getText());
-                    email = textEmail.getText();
-                    puesto = comboPuestos.getValue();
 
-                    Empleado empleado = new Empleado(rfc.toUpperCase(), nombre, sexo, telefono, edad, email, puesto);
+                    if (edad>0) {
 
-                    if (DataHolderEmpleados.create(empleado)) {
-                        crearAlerta("Empleado contratado!");
-                    } else {
-                        crearAlerta("RFC ya existente");
+                        email = textEmail.getText();
+                        puesto = comboPuestos.getValue();
+
+                        Empleado empleado = new Empleado(rfc.toUpperCase(), nombre, sexo, telefono, edad, email, puesto);
+
+                        if (DataHolderEmpleados.create(empleado)) {
+                            crearAlerta("Empleado contratado!");
+                        } else {
+                            crearAlerta("RFC ya existente");
+                        }
+                    }
+                    else{
+                        crearAlerta("Edad inválida");
                     }
                 }
             } else {

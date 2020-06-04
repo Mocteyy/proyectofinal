@@ -6,6 +6,8 @@ import java.util.List;
 
 public class DataHolderPuesto {
 
+    private static Puesto puestoHolder;
+
     private static List<Puesto> puestos = new ArrayList<>(Arrays.asList(
             new Puesto("Programador",15000.0, Puesto.programador),
             new Puesto("Tester",17000.0, Puesto.tester),
@@ -33,5 +35,11 @@ public class DataHolderPuesto {
         return null;
     }
 
+    public static Puesto getPuestoHolder() {
+        return puestoHolder;
+    }
 
+    public static void setPuestoHolder(Puesto puestoHolder) {
+        DataHolderPuesto.puestoHolder = puestoHolder;
+    }
 }

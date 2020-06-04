@@ -24,6 +24,14 @@ public class Puesto {
         return description;
     }
 
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public static String programador = "Responsable del desarrollo de los sistemas requeridos por la empresa";
     public static String administrador = "Resposable de las finanzas de la empresa";
     public static String tester = "Responsable de probar y validar el sistema del programador";
