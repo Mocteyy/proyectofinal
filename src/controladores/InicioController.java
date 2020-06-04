@@ -53,6 +53,9 @@ public class InicioController {
         altaButton.setStyle("-fx-background-color:  #2E64FE");
         buscarButton.setStyle("-fx-background-color:  #2E64FE");
         inicioButton.setStyle("-fx-background-color:  #2E64FE");
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/vistas/ver_puestos.fxml"));
+        changePane.getChildren().setAll(pane);
     }
 
     @FXML

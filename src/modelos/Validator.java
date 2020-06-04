@@ -58,4 +58,14 @@ public class Validator {
         }
         return false;
     }
+
+    public static boolean validateSalary(String salary){
+        double salario = Double.parseDouble(salary);
+        return !(salario < 1);
+    }
+
+    public static boolean validateAge(String age){
+        int salario = Integer.parseInt(age);
+        return !(salario < 18);
+    }
 }

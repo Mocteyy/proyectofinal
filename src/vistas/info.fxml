@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="470.0" prefWidth="760.0" style="-fx-background-color:  #616161" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -12,5 +13,20 @@
             <Image url="@../assets/images/LOGO3.png" />
          </image>
       </ImageView>
+      <Label layoutX="132.0" layoutY="266.0" text="Somos una empresa de desarrollo de software dedicada a las pequeñas empresas" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="201.0" layoutY="298.0" text="Ofrecemos software a la medida para cubrir sus necesidades." textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="253.0" layoutY="330.0" text="Estamos aquí para servir a la sociedad." textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

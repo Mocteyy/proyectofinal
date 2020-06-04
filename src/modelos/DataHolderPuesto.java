@@ -39,6 +39,10 @@ public class DataHolderPuesto {
         return puestoHolder;
     }
 
+    public static List<Puesto> getPuestos() {
+        return puestos;
+    }
+
     public static void setPuestoHolder(Puesto puestoHolder) {
         DataHolderPuesto.puestoHolder = puestoHolder;
     }

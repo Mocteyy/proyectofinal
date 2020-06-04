@@ -91,7 +91,7 @@ public class AltaController {
                         }
                     }
                     else{
-                        crearAlerta("Edad inválida");
+                        crearAlerta("No se puede contratar a menores de edad.");
                     }
                 }
             } else {

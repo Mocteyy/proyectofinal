@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import modelos.DataHolderPuesto;
 import modelos.Puesto;
 import modelos.Validator;
@@ -48,12 +49,16 @@ public class EditarPuestoController {
         if (description_puesto.getText().isEmpty() && salario_puesto.getText().isEmpty()){
             alertas("Hay campos vacíos");
         }
-        else if (!Validator.validateTelephone(salario_puesto.getText()) || Integer.parseInt(salario_puesto.getText()) < 1){
+        else if (!Validator.validateSalary(salario_puesto.getText()) || Double.parseDouble(salario_puesto.getText()) < 1){
             alertas("Salario inválido");
         }
         else{
+            alertas("Se ha modificado el puesto");
             puesto.setDescription(description_puesto.getText());
             puesto.setSalario(Double.parseDouble(salario_puesto.getText()));
+
+            Stage stage = (Stage) nombre_puesto.getParent().getScene().getWindow();
+            stage.close();
         }
     }
 
@@ -82,5 +87,9 @@ public class EditarPuestoController {
 
 
         dialog.show();
+    }
+
+    public void salir(){
+        System.exit(0);
     }
 }

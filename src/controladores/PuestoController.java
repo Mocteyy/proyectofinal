@@ -2,7 +2,6 @@ package controladores;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -12,47 +11,35 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import modelos.DataHolderEmpleados;
 import modelos.DataHolderPuesto;
-import modelos.Empleado;
 import modelos.Puesto;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
-public class PuestoController implements {
+public class PuestoController{
     @FXML
     private Button editarID,regresarID;
     @FXML
     private TableView <Puesto> tablePuesto;
     @FXML
-    private TableColumn <Puesto, String> colNomPuesto,colDescripcion;
+    private TableColumn <Puesto, String> nombrePuesto, description;
     @FXML
-    private TableColumn <Puesto, Double> colSalario;
+    private TableColumn <Puesto, Double> salario;
 
     private Stage stage;
 
 
-
-    public void Initialize ()
+    @FXML
+    public void initialize ()
     {
 
-        colNomPuesto.setCellValueFactory(new PropertyValueFactory<>("nombrePuesto"));
-        colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        colSalario.setCellValueFactory(new PropertyValueFactory<>("salario"));
-        tablePuesto.getItems().addAll(DataHolderPuesto.getPuestoHolder());
+        nombrePuesto.setCellValueFactory(new PropertyValueFactory<>("nombrePuesto"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        salario.setCellValueFactory(new PropertyValueFactory<>("salario"));
+        tablePuesto.getItems().addAll(DataHolderPuesto.getPuestos());
+        setOnClicListenerTable();
 
     }
-
-    public void regresar()
-    {
-
-
-    }
-
 
     public void goToEdit () throws IOException {
 
@@ -80,6 +67,12 @@ public class PuestoController implements {
             });
             return row ;
         });
+    }
+
+    public void actualizar(){
+        tablePuesto.getItems().clear();
+        tablePuesto.refresh();
+        tablePuesto.getItems().addAll(DataHolderPuesto.getPuestos());
     }
 
 }
