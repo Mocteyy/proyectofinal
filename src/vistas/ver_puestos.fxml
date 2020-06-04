@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #616161;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.PuestoController">
+   <children>
+      <TableView fx:id="tablePuesto" layoutX="79.0" layoutY="59.0" prefHeight="301.0" prefWidth="442.0">
+        <columns>
+            <TableColumn fx:id="nombrePuesto" prefWidth="135.0" text="Nombre" />
+          <TableColumn fx:id="descripcion" prefWidth="198.0" text="Descripción" />
+          <TableColumn fx:id="salario" minWidth="0.0" prefWidth="108.0" text="Salario" />
+        </columns>
+      </TableView>
+      <Label layoutX="248.0" layoutY="14.0" text="PUESTOS" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="editarID" layoutX="539.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#setOnClicListenerTable" style="-fx-background-color: #ED9300;" text="Editar">
+         <effect>
+            <DropShadow color="#00000058" />
+         </effect>
+      </Button>
+      <Button fx:id="regresarID" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#regresar" style="-fx-background-color: #ED9300;" text="Regresar">
+         <effect>
+            <DropShadow color="#0000004d" />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
